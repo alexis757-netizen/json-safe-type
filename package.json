@@ -1,0 +1,52 @@
+{
+    "name": "json-safe-type",
+    "displayName": "JSON Safe Type",
+    "description": "Generate TS types and scrub sensitive data locally.",
+    "publisher": "alexis757",
+    "version": "0.0.2",
+    "engines": {
+        "vscode": "^1.85.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [],
+    "main": "./out/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "jsonSafe.generate",
+                "title": "生成类型并脱敏 JSON"
+            }
+        ],
+        "menus": {
+            "editor/context": [
+                {
+                    "command": "jsonSafe.generate",
+                    "group": "navigation",
+                    "when": "editorHasSelection"
+                }
+            ]
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "pretest": "npm run compile && npm run lint",
+        "lint": "eslint src --ext ts",
+        "test": "vscode-test"
+    },
+    "devDependencies": {
+        "@types/vscode": "^1.85.0",
+        "@types/mocha": "^10.2.4",
+        "@types/node": "18.x",
+        "@typescript-eslint/eslint-plugin": "^6.15.0",
+        "@typescript-eslint/parser": "^6.15.0",
+        "eslint": "^8.56.0",
+        "typescript": "^5.3.3",
+        "@vscode/test-cli": "^0.0.4",
+        "@vscode/test-electron": "^2.3.8"
+    },
+    "license": "MIT"
+}
